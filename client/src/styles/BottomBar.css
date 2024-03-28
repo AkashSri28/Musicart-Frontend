@@ -1,0 +1,15 @@
+.bottom-bar {
+    position: fixed;
+    bottom:0;
+    left:0;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    color: white;
+    background-color: #2E0052;
+  }
+  
+  .copyright-text {
+    margin: 0;
+  }
+  

@@ -1,0 +1,99 @@
+/* ProductDetails.css */
+
+
+  /* Horizontal bar */
+  .horizontal-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+  }
+  
+  .left-side {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 50px;
+    height: auto;
+    margin-right: 20px;
+  }
+  
+  .nav-link {
+    margin-right: 20px;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .right-side {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-image {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+  }
+
+  /* Product details content */
+.product-details-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .product-images {
+    width: 50%;
+    padding-right: 20px;
+  }
+
+  /* Product description */
+.product-description {
+    width: 50%;
+    text-align: left; /* Align content to the left */
+  }
+
+  .product-description h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .ratings {
+    margin-bottom: 10px;
+  }
+  
+  .product-description p {
+    margin-bottom: 10px;
+  }
+  
+  .product-description button {
+    background-color: #f0c14b;
+    border: 1px solid #a88734;
+    color: #111;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 10px;
+    width: 250px; /* Set button width */
+    border-radius: 5px; /* Apply rounded corners */
+    display: block; /* Display buttons on separate lines */
+    margin-bottom: 10px; /* Add margin between buttons */
+  }
+
+  .product-description button.buy-now {
+    background-color: #a88734; /* Change background color for Buy Now button */
+  }
+  
+  .product-description button:hover {
+    background-color: #ddb347;
+  }
+
+
+
+
+
+
+  
+  

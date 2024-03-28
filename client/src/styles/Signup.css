@@ -1,0 +1,75 @@
+.signup-container {
+    margin: 15% auto;
+    width: 40%;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .logo {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  .form-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: left;
+    margin: 0 auto;
+  }
+  
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group.error input {
+    border-color: red;
+  }
+
+  .error-message {
+    color: red;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    margin-top: 10px;
+    width: auto;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+  }
+  
+  button[type="submit"] {
+    background-color: #2E0052;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+  }
+  
+  .success-message {
+    color: green;
+  }
+  

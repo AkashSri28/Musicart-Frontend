@@ -1,0 +1,35 @@
+/* Top bar */
+/* Top bar styles */
+.top-bar {
+    background-color: #2E0052; /* Background color */
+    padding: 10px; /* Padding */
+    display: flex; /* Use flexbox to align items */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    color: #fff;
+  }
+  
+  /* Phone number styles */
+  .phone-number {
+    font-size: 14px; /* Font size */
+  }
+  
+  /* Promotion styles */
+  .promotion {
+    font-size: 14px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    flex-grow: 1;    
+  }
+
+  .auth-buttons {
+    display: flex;
+    gap: 5px;
+  }  
+
+  .auth-buttons a{
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+  }
+

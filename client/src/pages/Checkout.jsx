@@ -33,7 +33,7 @@ function Checkout() {
                             <div className="form-group">
                                 <label htmlFor="name">1. Delivery address</label>
                                 <div>
-                                    <input type="text" id="name" value={user.name} readOnly className="styled-input" />
+                                    <input type="text" id="name" value={user?.name} readOnly className="styled-input" />
                                     <textarea id="address" name="address" rows="4"></textarea>
                                 </div>
                             </div>

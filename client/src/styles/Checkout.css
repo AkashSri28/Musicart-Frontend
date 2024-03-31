@@ -47,8 +47,7 @@
     text-align: left;
   }
   
-  .delivery-form-section,
-  .place-order-section {
+  .delivery-form-section{
     flex: 1;
     padding: 20px;
   }
@@ -108,59 +107,81 @@
         border: 2px solid #3c00ff; /* Red border to highlight the selected image */
     }  
     
-    form hr{
+    hr{
         border: none;
         border-top: 1px solid #ccc; /* Add a border-top to create a horizontal line */
         margin-top: 20px; /* Add some top margin to create space between elements */
     }
+
+    .place-order-section{
+        border: 1px solid #e1e1e1;
+        border-radius: 10px;
+        /* display: grid;
+        grid-template-columns: 1fr 2fr; */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px;
+        padding: 10px 20px;
+    }
   
   .place-order-button {
-    background-color: #ff9900;
-    color: white;
     padding: 10px 20px;
+    background-color: #FFD600; /* Amazon's primary button color */
+    color: #111; /* Text color */
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   
-  .place-order-button:hover {
-    background-color: #ffad33;
+  .order-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .order-total {
+    font-size: 17px;
+    font-weight: bold;
+    color: #B52B00;
+  }
+
+  .order-terms {
+    font-size: 15px;
+    color: #555; /* Gray text color */
   }
   
   .order-summary-section {
     margin-top: 20px;
+    border: 1px solid #e1e1e1;
+    height:fit-content;
+    border-radius: 10px;
+    padding: 20px;
+    width: 25%;
   }
   
-  .order-summary-section h3 {
+  .order-summary-section .place-order-button {
     margin-top: 0;
+    cursor: pointer;
+    width: 100%;
   }
   
-  .order-items {
-    margin-top: 10px;
+  .order-summary-section .order-terms{
+    font-size: 10px;
   }
-  
-  .order-item {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
+
+  .order-items{
+    text-align: left;
   }
-  
-  .order-item img {
-    width: 80px;
-    height: auto;
-    margin-right: 20px;
+
+  .order-summary-title{
+    text-align: left;
   }
-  
-  .order-item p {
-    margin: 5px 0;
+
+  .order-details-vertical {
+    color: #797979;
+    font-size: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
-  
-  .order-total {
-    margin-top: 20px;
-  }
-  
-  .order-total p {
-    margin-bottom: 5px;
-  }
-  

@@ -9,7 +9,7 @@ import { useCart } from '../context/cartContext';
 function Checkout() {
     const navigate = useNavigate();
     const { user } = useAuth();
-    const { cartItems } = useCart();
+    const { cartItems, cartTotal } = useCart();
 
     const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -81,31 +81,42 @@ function Checkout() {
                         </form>
                     </div>
                     <div className="place-order-section">
-                        <h3>Place Order</h3>
-                        <button className="place-order-button">Place Order</button>
-                        <p>By placing your order, you agree to our Terms of Use and Privacy Notice.</p>
+                        <button className="place-order-button">Place your order</button>
+                        <div className="order-details">
+                            <p className="order-total">Order Total: ₹{cartTotal}</p>
+                            <p className="order-terms">By placing your order, you agree to our Terms of Use and Privacy Notice.</p>
+                        </div>
                     </div>
                 </div>
+              
 
                 <div className="order-summary-section">
-                    <h3>Order Summary</h3>
+                    <button className="place-order-button">Place your order</button>
+                    <p className="order-terms">By placing your order, you agree to our Terms of Use and Privacy Notice.</p>
+                    <hr/>
                     <div className="order-items">
-                        {/* Placeholder for order items */}
-                        <div className="order-item">
-                            <img src="placeholder_image_url" alt="Product" />
-                            <div>
-                                <p>Product Name</p>
-                                <p>Price</p>
-                                <p>Quantity</p>
+                        <p className="order-summary-title">Order Summary</p>
+                        {/* Repeat this div for each item in the cart */}
+
+                        <div className="order-total-vertical">
+                            <div className="order-details-vertical">
+                                <p>Items:</p>
+                                <p>₹{cartTotal}</p>
+                            </div>
+                            <div className="order-details-vertical">
+                                <p>Delivery:</p>
+                                <p>₹45.00</p>
+                            </div>
+                            <hr />
+                            <div className="order-details-vertical" style={{color:'#B52B00', fontSize: '15px', fontWeight:'bold'}}>
+                                <p>Order Total:</p>
+                                <p>₹{(cartTotal + 45.00).toFixed(2)}</p>
                             </div>
                         </div>
-                        {/* Repeat this div for each item in the cart */}
                     </div>
-                    <div className="order-total">
-                        <p>Subtotal: $XXX</p>
-                        <p>Shipping: $XX</p>
-                        <p>Total: $XXX</p>
-                    </div>
+
+
+                   
                  </div>
             </div>
         </div>

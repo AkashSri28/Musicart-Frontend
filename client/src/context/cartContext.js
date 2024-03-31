@@ -8,6 +8,7 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const { isLoggedIn, user } = useAuth();
+  const [cartTotal, setCartTotal] = useState(0);
 
   let totalProductCount = 0;
 
@@ -15,13 +16,22 @@ export const CartProvider = ({ children }) => {
       totalProductCount += item.quantity;
   });
 
+  const calculateCartTotal = () => {
+    let total = 0;
+    cartItems.forEach(item => {
+      total += item.quantity * parseFloat(item.price.replace('₹', ''));
+    });
+    setCartTotal(total);
+  };
+
+
   const fetchCartItems = async () => {
     if (isLoggedIn) {
       try {
         const response = await axios.post('http://localhost:4000/api/cart', { userId: user._id });
         if (response.status === 200) {
-          setCartItems(response.data); // Assuming the backend returns an array of cart items
-          console.log(response.data)
+          setCartItems(response.data); 
+          calculateCartTotal();
         } 
         else if (response.status === 201) {
           // Handle 404 error
@@ -85,7 +95,7 @@ export const CartProvider = ({ children }) => {
 
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, totalProductCount, updateCartItemQuantity }}>
+    <CartContext.Provider value={{ cartItems, addToCart, totalProductCount, updateCartItemQuantity, cartTotal }}>
       {children}
     </CartContext.Provider>
   );

@@ -47,7 +47,7 @@ const ProductListing = () => {
     // Fetch products from backend API when component mounts
     const fetchProducts = async () => {
         try {
-          const response = await axios.get('https://musicart-api.vercel.app/api/products');
+          const response = await axios.get('https://musicart-backend-vw7t.onrender.com/api/products');
           if (response.status === 200) {
             setProducts(response.data);
             setFilteredProducts(response.data);
@@ -67,7 +67,7 @@ const ProductListing = () => {
     // Fetch filtered products from the backend whenever the selected filters change
     const fetchFilteredProducts = async () => {
       try {
-        const response = await axios.get('https://musicart-api.vercel.app/api/products/filter', {
+        const response = await axios.get('https://musicart-backend-vw7t.onrender.com/api/products/filter', {
           params: {
             type: selectedType,
             company: selectedCompany,
@@ -106,7 +106,7 @@ const ProductListing = () => {
     
     //Search request to backend
     try {
-      const response = await axios.get(`http://localhost:4000/api/products/search?query=${searchTerm}`);
+      const response = await axios.get(`https://musicart-backend-vw7t.onrender.com/api/products/search?query=${searchTerm}`);
       if (response.status === 200) {
         setFilteredProducts(response.data);
       } else {

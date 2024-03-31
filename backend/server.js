@@ -14,8 +14,8 @@ const app = express();
 // Middleware for parsing JSON bodies
 app.use(cors(
   {
-    origin: ["https://musicart-api.vercel.app/"],
-    methods:["POST", "GET"],
+    origin: ["https://musicart2-frontend.vercel.app/"],
+    methods:["POST", "GET", "PUT"],
     credentials: true
   }
 ));

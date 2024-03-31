@@ -12,11 +12,18 @@ require('dotenv').config();
 const app = express();
 
 // Middleware for parsing JSON bodies
-app.use(cors());
+app.use(cors(
+  {
+    origin: ["https://deploy-mern-1whq.vercel.app"],
+    methods:["POST", "GET"],
+    credentials: true
+  }
+));
+
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://sriakash2009:admin@cluster0.hbcyh4c.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect('mongodb+srv://sriakash2009:admin@cluster0.hbcyh4c.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

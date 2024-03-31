@@ -11,7 +11,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f0f0f0;
   padding: 10px;
 }
 
@@ -43,6 +42,34 @@
   border-radius: 50%;
 }
 
+.back-to-products-button {
+  background-color: #2E0052;
+  color: #fff; /* Text color */
+  padding: 10px 20px; /* Adjust padding */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add border radius */
+  cursor: pointer; /* Add cursor pointer */
+  display: flex;
+  margin-top: 20px;
+}
+
+.back-to-products-button:hover {
+  background-color: #4A0072; /* Darker shade on hover */
+}
+
+.cart-title {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.cart-title-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
 .cart-content{
   display: flex; /* Display children in a row */
   width: 100%; /* Take up full width */
@@ -52,12 +79,14 @@
   width: 75%;
   border-top: 1px solid #ccc;
   border-right: 1px solid #ccc;
-  padding-top: 10px; /* Add some padding to separate content from border */
+  padding-top: 10px; 
 }
 
-.price-details-section {
-  width: 25%;
+.cart-items{
+  overflow-y: auto; /* Enable vertical scroll */
+  height: 60vh; /* Set maximum height */
 }
+
 
 .cart-item {
   display: flex;
@@ -97,20 +126,37 @@
   padding: 20px;
 }
 
+.price-details-section {
+  width: 25%;
+  padding-left: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
 .price-details {
-  padding-top: 20px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .checkout-button {
+  width: 100%;
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #007bff; /* Example color */
-  color: #fff;
+  background-color: #FFD600; /* Example color */
+  color: #000;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .checkout-button:hover {
-  background-color: #0056b3; /* Darker shade */
+  background-color: #756207; /* Darker shade */
 }

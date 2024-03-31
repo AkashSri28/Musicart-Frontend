@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
   price: {
-    type: Number,
+    type: String,
     required: true,
   },
   color: {
@@ -25,6 +25,10 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  company: {
+    type: String,
+    required: true
+  }
 });
 
 const Product = mongoose.model('Product', productSchema);

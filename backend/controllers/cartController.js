@@ -17,9 +17,6 @@ const addToCart = async (req, res) => {
         const productIndex = cart.products.findIndex(product => product.product.equals(new mongoose.Types.ObjectId(productId)));
   
         if (productIndex !== -1) {
-          // If the product is already in the cart, update the quantity or any other relevant details
-          // For simplicity, let's assume we're just updating the quantity
-          console.log(productIndex)
           cart.products[productIndex].quantity++;
         } else {
           // If the product is not yet in the cart, add it
@@ -39,6 +36,43 @@ const addToCart = async (req, res) => {
     }
   };
 
+  //Update product quantity in cart for user
+  const updateCartItemQuantity = async (req, res) => {
+    try {
+      // Extract item ID and quantity from the request body
+      const { productId, quantity, userId } = req.body;
+  
+      // Find the user's cart based on user ID
+      let cart = await Cart.findOne({ user: userId });
+  
+      if (!cart) {
+        // If the user doesn't have a cart, send a response indicating the cart is not found
+        return res.status(404).json({ success: false, message: 'Cart not found' });
+      }
+      
+      // Find the index of the item in the cart products array
+      const productIndex = cart.products.findIndex(product => product.product.equals(new mongoose.Types.ObjectId(productId)));
+  
+      if (productIndex === -1) {
+        // If the item is not found in the cart, send a response indicating the item is not in the cart
+        return res.status(404).json({ success: false, message: 'Product not found in the cart' });
+      }
+  
+      // Update the quantity of the item in the cart
+      cart.products[productIndex].quantity = quantity;
+  
+      // Save the updated cart to the database
+      await cart.save();
+  
+      // Send a success response
+      res.status(200).json({ success: true, message: 'Item quantity updated successfully' });
+    } catch (error) {
+      // If an error occurs, send an error response
+      console.error('Error updating item quantity:', error);
+      res.status(500).json({ success: false, message: 'Failed to update item quantity' });
+    }
+  };
+
   // Controller function to fetch user's cart data
 const getUserCart = async (req, res) => {
     try {
@@ -49,7 +83,7 @@ const getUserCart = async (req, res) => {
       const cart = await Cart.findOne({ user: userId }).populate('products.product');
   
       if (!cart) {
-        return res.status(404).json({ message: 'Cart not found' });
+        return res.status(201).json({ message: 'Cart not found' });
       }
   
       // Extract cart items and return them as a response
@@ -70,4 +104,4 @@ const getUserCart = async (req, res) => {
   };
 
   
-  module.exports = {addToCart, getUserCart};
+  module.exports = {addToCart, getUserCart, updateCartItemQuantity};

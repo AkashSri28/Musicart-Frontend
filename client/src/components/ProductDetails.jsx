@@ -6,12 +6,16 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import TopBar from './TopBar';
 import HorizontalBar from './HorizontalBar';
+import { useCart } from '../context/cartContext';
+import { useAuth } from '../context/authContext';
 
 const ProductDetails = () => {
   const productId  = useParams().id; // Get the product ID from the URL
   const [product, setProduct] = useState(null);
-
+  const { isLoggedIn } = useAuth(); 
+  const { addToCart } = useCart();
   const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -31,23 +35,12 @@ const ProductDetails = () => {
   }, [productId]);
 
   const handleAddToCart = async () => {
-    try {
-      const userId = JSON.parse(localStorage.getItem('user'))._id;
-      // Make a POST request to add the product to the user's cart
-      const response = await axios.post('http://localhost:4000/api/cart/add', {
-        productId, userId
-      });
-      if (response.status === 200) {
-        console.log('Product added to cart successfully');
-        // Optionally, you can show a success message or update the UI
-      } else {
-        console.error('Failed to add product to cart');
-        // Optionally, you can show an error message or handle the error
-      }
-    } catch (error) {
-      console.error('Error adding product to cart:', error);
-      // Optionally, you can show an error message or handle the error
+    if (!isLoggedIn) {
+      // If user is not logged in, redirect to login page
+      navigate('/login');
+      return;
     }
+    addToCart(product); 
   };
 
 

@@ -10,6 +10,8 @@ import { CiGrid41 } from "react-icons/ci";
 import { IoGridSharp } from "react-icons/io5";
 import { FaList } from "react-icons/fa";
 import { TfiViewListAlt } from "react-icons/tfi";
+import { FaSearch } from 'react-icons/fa';
+import ViewCart from './ViewCart';
 
 
 const ProductListing = () => {
@@ -18,6 +20,7 @@ const ProductListing = () => {
   const [filters, setFilters] = useState([]);
   const [sortingCriteria, setSortingCriteria] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const [selectedType, setSelectedType] = useState('');
@@ -46,8 +49,9 @@ const ProductListing = () => {
         try {
           const response = await axios.get('http://localhost:4000/api/products');
           if (response.status === 200) {
-            // setProducts(response.data);
+            setProducts(response.data);
             setFilteredProducts(response.data);
+            console.log(response.data);
           } else {
             console.error('Failed to fetch products');
           }
@@ -128,19 +132,10 @@ const ProductListing = () => {
     }
   };
 
-  const handleAddToCart = (productId) => {
-    // Implement functionality to add product to cart
-    // You may use context, redux, or other state management approaches to manage cart state
-  };
-
-  const handleViewCart = () =>{
-    navigate('/cart');
-  }
-
   // Options for filter dropdowns
-  const headphoneTypes = ['Type A', 'Type B', 'Type C'];
-  const companies = ['Company A', 'Company B', 'Company C'];
-  const colors = ['Red', 'Blue', 'Green', 'Yellow', 'Black', 'White', 'Purple', 'Orange', 'Brown', 'Gray', 'Pink', 'Cyan', 'Magenta'];
+  const headphoneTypes = [...new Set(products.map(product => product.productType))];
+  const companies = [...new Set(products.map(product => product.company))];
+  const colors = [...new Set(products.map(product => product.color))];
   const priceRanges = ['Under $20', '$20 - $30', '$30 - $40', '$40 - $50', 'Over $50'];
 
    // Function to get user's initials
@@ -184,7 +179,7 @@ const ProductListing = () => {
           <div className="right-side">
             {isLoggedIn && (
               <>
-                <button className="view-cart-btn" onClick={handleViewCart}>View Cart {cartItems.length} </button>
+                <ViewCart showCartCount={true}/>
                 
                 {/* User profile button */}
                 <button className="profile-button" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
@@ -208,6 +203,7 @@ const ProductListing = () => {
 
         {/* Search bar */}
         <div className="search-container">
+          <span className="search-icon">&#128269;</span>
           <input
             type="text"
             placeholder={"Search by Product Name"}
@@ -277,13 +273,26 @@ const ProductListing = () => {
             <div className="product-grid">
               {filteredProducts.map((product) => (
               <div key={product.id} className="product-card">
-                <img src={product.imageUrl} alt={product.productName} />
+
+                <div className="product-image-container">
+
+                  <img 
+                    src={product.imageUrl} 
+                    alt={product.productName} 
+                    onClick={() => handleDetailsClick(product)}
+                    style={{ cursor: 'pointer' }}
+                  />
+                  <div className="add-to-cart-button" onClick={() => addToCart(product)}>
+                    <img src="cart_icon.png" alt="Add to Cart" />
+                  </div>
+
+                </div>
+                
                 <div className="product-details">
                   <h3>{product.productName}</h3>
-                  <p>Price: ${product.price}</p>
+                  <p>Price: {product.price}</p>
                   <p>{product.color}</p>
                   <p>{product.productType}</p>
-                  <button onClick={() => handleAddToCart(product._id)}>Add to Cart</button>
                 </div>
               </div>
             ))}
@@ -295,10 +304,23 @@ const ProductListing = () => {
             <div className="product-list">
               {filteredProducts.map((product) => (
               <div key={product.id} className="product-card">
-                <img src={product.imageUrl} alt={product.productName} />
+                
+                <div className="product-image-container">
+
+                  <img 
+                    src={product.imageUrl} 
+                    alt={product.productName} 
+                    onClick={() => handleDetailsClick(product)}
+                    style={{ cursor: 'pointer' }}
+                  />
+                  <div className="add-to-cart-button" onClick={() => addToCart(product)}>
+                    <img src="cart_icon.png" alt="Add to Cart" />
+                  </div>
+
+                </div>
                 <div className="product-details">
                   <h3>{product.productName}</h3>
-                  <p>Price: ${product.price}</p>
+                  <p>Price: {product.price}</p>
                   <p>{product.color}</p>
                   <p>{product.description}</p>
                   <p>{product.productType}</p>

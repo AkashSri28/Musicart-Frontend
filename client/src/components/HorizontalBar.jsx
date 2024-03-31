@@ -1,7 +1,9 @@
 // HorizontalBar.jsx
 import React from 'react';
+import ViewCart from './ViewCart';
 
-const HorizontalBar = () => {
+const HorizontalBar = ({showCartCount}) => {
+
   return (
     <div className="horizontal-bar">
       {/* Left side */}
@@ -12,8 +14,8 @@ const HorizontalBar = () => {
       </div>
       {/* Right side */}
       <div className="right-side">
-        <button className="view-cart-btn">View Cart</button>
-        <img src="profile.jpg" alt="Profile" className="profile-image" />
+        {showCartCount}
+        <ViewCart showCartCount={showCartCount}/>
       </div>
     </div>
   );

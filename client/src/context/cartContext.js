@@ -28,7 +28,7 @@ export const CartProvider = ({ children }) => {
   const fetchCartItems = async () => {
     if (isLoggedIn) {
       try {
-        const response = await axios.post('http://localhost:4000/api/cart', { userId: user._id });
+        const response = await axios.post('https://musicart-backend-vw7t.onrender.com/api/cart', { userId: user._id });
         if (response.status === 200) {
           setCartItems(response.data); 
           calculateCartTotal();
@@ -55,7 +55,7 @@ export const CartProvider = ({ children }) => {
     try{
       const userId = user._id;
       const productId = product._id;
-      const response = await axios.post('http://localhost:4000/api/cart/add', {
+      const response = await axios.post('https://musicart-backend-vw7t.onrender.com/api/cart/add', {
         productId, userId
       });
       if (response.status === 200) {

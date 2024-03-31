@@ -47,7 +47,7 @@ const Login = () => {
 
     try {
       // Make API call to authenticate user
-      const response = await axios.post('http://localhost:4000/api/user/login', { email, password });
+      const response = await axios.post('https://musicart-api.vercel.app/api/user/login', { email, password });
 
       // Handle successful login
       login(response.data.user, response.data.token); // Use the login function from AuthContext

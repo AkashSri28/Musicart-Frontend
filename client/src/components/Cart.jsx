@@ -112,7 +112,7 @@ const Cart = () => {
                   </div>
                 </div>
 
-                <div className="checkout-section">
+                <div>
                   <div className="price-item">
                     <p>Total amount:</p>
                     <p>₹{(cartItems.reduce((total, item) => total + item.quantity * parseFloat(item.price.replace('₹', '')), 0) + 45).toFixed(2)}</p>

@@ -56,7 +56,7 @@ function Checkout() {
             // Check if the request was successful
             if (response.status === 201) {
                 // Redirect to the success page
-                console.log(response.data)
+                
                 navigate('/order-success');
             } else {
                 console.error('Failed to save invoice data');

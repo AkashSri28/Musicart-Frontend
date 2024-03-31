@@ -30,7 +30,7 @@ const ProductListing = () => {
 
   const navigate = useNavigate();
   const {isLoggedIn, user, logout} = useAuth();
-  const { cartItems, addToCart } = useCart(); 
+  const { fetchCartItems, addToCart } = useCart(); 
 
   const [viewMode, setViewMode] = useState('grid');
 
@@ -51,7 +51,6 @@ const ProductListing = () => {
           if (response.status === 200) {
             setProducts(response.data);
             setFilteredProducts(response.data);
-            console.log(response.data);
           } else {
             console.error('Failed to fetch products');
           }
@@ -59,7 +58,8 @@ const ProductListing = () => {
           console.error('Error fetching products:', error);
         }
       };
-  
+
+      fetchCartItems();  
       fetchProducts();
   }, []);
 

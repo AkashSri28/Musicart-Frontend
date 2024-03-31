@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import TopBar from '../components/TopBar'
 import HorizontalBar from '../components/HorizontalBar';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Checkout.css'; // Import the CSS file
 import { useAuth } from '../context/authContext';
 import { useCart } from '../context/cartContext';
+import axios from 'axios';
 
 function Checkout() {
     const navigate = useNavigate();
@@ -13,8 +14,62 @@ function Checkout() {
 
     const [selectedProduct, setSelectedProduct] = useState(null);
 
+    const addressRef = useRef(null);
+    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
+
     const handleImageClick = (productName, color) => {
         setSelectedProduct({ productName, color });
+    };
+
+    const handlePlaceOrder = async (event) => {
+        event.preventDefault(); 
+
+        if (addressRef.current.value.trim() === '') {
+            alert('Please fill out the delivery address');
+            return;
+        }
+
+        if (!selectedPaymentMethod) {
+            alert('Please select a payment method');
+            return;
+        }
+
+        // Prepare the invoice data
+        const invoiceData = {
+            userId: user._id, // Assuming user._id is accessible
+            userName: user.name, // Assuming user.name is accessible
+            address: addressRef.current.value.trim(),
+            paymentMethod: selectedPaymentMethod,
+            cartItems: cartItems.map(item => ({
+                productId: item.productId,
+                productName: item.productName,
+                quantity: item.quantity,
+                price: item.price
+            })),
+            cartTotal: cartTotal
+        };
+
+        try {
+            // Send a POST request to save the invoice data
+            const response = await axios.post('https://musicart-backend-vw7t.onrender.com/api/invoices', invoiceData);
+    
+            // Check if the request was successful
+            if (response.status === 201) {
+                // Redirect to the success page
+                console.log(response.data)
+                navigate('/order-success');
+            } else {
+                console.error('Failed to save invoice data');
+                // Optionally, you can display an error message to the user
+            }
+        } catch (error) {
+            console.error('Error saving invoice data:', error);
+            // Optionally, you can display an error message to the user
+        }
+    };
+
+    const handlePaymentMethodChange = (e) => {
+        setSelectedPaymentMethod(e.target.value);
     };
 
   return (
@@ -34,14 +89,14 @@ function Checkout() {
                                 <label htmlFor="name">1. Delivery address</label>
                                 <div>
                                     <input type="text" id="name" value={user?.name} readOnly className="styled-input" />
-                                    <textarea id="address" name="address" rows="4"></textarea>
+                                    <textarea ref={addressRef} id="address" name="address" rows="4"></textarea>
                                 </div>
                             </div>
                             <hr/>
 
                             <div className="form-group">
                                 <label htmlFor="payment-method">2. Payment Method:</label>
-                                <select id="payment-method" name="payment-method">
+                                <select id="payment-method" name="payment-method" onChange={handlePaymentMethodChange}>
                                     <option> Mode of payment</option>
                                     <option value="pay-on-delivery">Pay on Delivery</option>
                                     <option value="upi">UPI</option>
@@ -81,7 +136,7 @@ function Checkout() {
                         </form>
                     </div>
                     <div className="place-order-section">
-                        <button className="place-order-button">Place your order</button>
+                        <button onClick={handlePlaceOrder} className="place-order-button">Place your order</button>
                         <div className="order-details">
                             <p className="order-total">Order Total: ₹{cartTotal}</p>
                             <p className="order-terms">By placing your order, you agree to our Terms of Use and Privacy Notice.</p>
@@ -91,7 +146,7 @@ function Checkout() {
               
 
                 <div className="order-summary-section">
-                    <button className="place-order-button">Place your order</button>
+                    <button onClick={handlePlaceOrder} className="place-order-button">Place your order</button>
                     <p className="order-terms">By placing your order, you agree to our Terms of Use and Privacy Notice.</p>
                     <hr/>
                     <div className="order-items">

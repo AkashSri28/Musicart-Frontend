@@ -57,11 +57,13 @@
 
   .product-image-container {
     position: relative;
+    width: 250px;
+    height: 250px;
   }
   
   .product-image-container img {
     width: 100%;
-    height: auto;
+    height: 100%;
   }
   
   .add-to-cart-button {

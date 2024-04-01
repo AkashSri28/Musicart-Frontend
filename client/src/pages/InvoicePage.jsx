@@ -15,9 +15,7 @@ function InvoicePage() {
     const navigate = useNavigate();
 
     // Function to fetch invoices
-    useEffect(() => {
-
-        
+    useEffect(() => {        
         // Fetch invoices for the current user
         const fetchInvoices = async () => {
             try {              
@@ -33,6 +31,11 @@ function InvoicePage() {
 
         fetchInvoices(); // Call fetchInvoices function
     }, [user]);
+
+    const handleViewInvoice = (invoiceId) => {
+        // Navigate to the invoice detail page with the invoice ID
+        navigate(`/invoices/${invoiceId}`);
+    };
 
     return (
         <div>
@@ -60,13 +63,12 @@ function InvoicePage() {
                                 <img src="invoice.png" alt="Invoice" className="invoice-image" />
                                 <div className="invoice-details-column">
                                     <p>{invoice.userName}</p>
-                                    <p>{invoice.address}</p>
+                                    <p style={{fontSize: '14px'}}>{invoice.address}</p>
                                 </div>
                             </div>
 
                             {/* View invoice button */}
-                            <button className="view-invoice-button">View Invoice</button>
-                            <hr/>
+                            <button className="view-invoice-button" onClick={() => handleViewInvoice(invoice._id)}>View Invoice</button>
                         </div>
                     ))}
                 </div>

@@ -68,12 +68,10 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="header-container"> {/* Container for logo and text */}
-        {/* Logo */}
-        <img src="logo.png" alt="Logo" className="logo" />
+        <img src="logo.png" alt="Logo" class="logo" />
+        <span class="logo-text">Musicart</span>
+      </div>
 
-        {/* Musicart text */}
-        <h1>Musicart</h1>
-    </div>
 
       <div className="form-container"> {/* Wrap the form in a div */}
         <h2>Sign in</h2>
@@ -104,16 +102,19 @@ const Login = () => {
             <button type="submit">Continue</button>
 
             {/* Agreement note */}
-            <p>By continuing, you agree to Musicart privacy notice and conditions of use.</p>
+            <p className='agreement-note'>By continuing, you agree to Musicart privacy notice and conditions of use.</p>
         </form>
       </div>
 
         {/* New to Musicart */}
         <div className="new-to-musicart">
+          <div className="line"></div>
             <p>New to Musicart?</p>
-            {/* Create account button */}
-            <button onClick={handleCreateAccount}>Create your Musicart account</button>
+          <div className="line"></div>
+           
         </div>
+
+        <button className='create-account-btn' onClick={handleCreateAccount}>Create your Musicart account</button>
 
         <BottomBar/>
     </div>

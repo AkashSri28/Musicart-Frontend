@@ -20,7 +20,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/products/${productId}`);
+        const response = await axios.get(`https://musicart-backend-vw7t.onrender.com/api/products/${productId}`);
         if (response.status === 200) {
           setProduct(response.data);
         } else {
@@ -64,7 +64,7 @@ const ProductDetails = () => {
                     {/* {product && product.imageUrl.map((image, index) => (
                       <img key={index} src={image} alt={`Product ${index + 1}`} />
                     ))} */}
-                    {product && <img src={product.imageUrl} alt={product.productName} />}
+                    {product && <img className='product-image' src={product.imageUrl} alt={product.productName} />}
                   </div>
 
                   {/* Right side for description */}

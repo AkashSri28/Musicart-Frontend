@@ -6,7 +6,9 @@
 .invoice-item {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    border-bottom: 1px solid #ccc;
 }
 
 
@@ -17,13 +19,20 @@
 }
 
 .invoice-image {
-    width: 100px; /* Set width of the image */
+    width: 80px; /* Set width of the image */
     margin-right: 20px; /* Add margin for spacing */
 }
 
 .invoice-details-column {
     display: flex;
     flex-direction: column;
+    color: #797979;
+    text-align: left;
+}
+
+.invoice-details-column p{
+   margin-top: 5px;
+   margin-bottom: 5px;
 }
 
 .view-invoice-button {

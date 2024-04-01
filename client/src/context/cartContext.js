@@ -7,7 +7,7 @@ const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
-  const { isLoggedIn, user } = useAuth();
+  const { isLoggedIn, user, token } = useAuth();
   const [cartTotal, setCartTotal] = useState(0);
 
   let totalProductCount = 0;
@@ -28,7 +28,9 @@ export const CartProvider = ({ children }) => {
   const fetchCartItems = async () => {
     if (isLoggedIn) {
       try {
-        const response = await axios.post('https://musicart-backend-vw7t.onrender.com/api/cart', { userId: user._id });
+        const response = await axios.post('https://musicart-backend-vw7t.onrender.com/api/cart', 
+        { userId: user._id }
+        );
         if (response.status === 200) {
           setCartItems(response.data); 
           calculateCartTotal();
@@ -49,7 +51,7 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     fetchCartItems();
-  }, [isLoggedIn, user, totalProductCount]);
+  }, [isLoggedIn, user, totalProductCount, token]);
 
   const addToCart = async (product) => {
     try{
@@ -75,7 +77,7 @@ export const CartProvider = ({ children }) => {
     try {
       const userId = user._id;
       console.log(productId+" "+quantity+" "+userId);
-      const response = await axios.put(`http://localhost:4000/api/cart/updateQuantity`, {
+      const response = await axios.put(`https://musicart-backend-vw7t.onrender.com/api/cart/updateQuantity`, {
         productId,
         quantity,
         userId 

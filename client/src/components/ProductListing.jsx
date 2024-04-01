@@ -121,7 +121,7 @@ const ProductListing = () => {
   const handleSortingChange = async (criteria) => {
     setSortingCriteria(criteria);
     try {
-      const response = await axios.get(`http://localhost:4000/api/products/sort?criteria=${criteria}`);
+      const response = await axios.get(`https://musicart-backend-vw7t.onrender.com/api/products/sort?criteria=${criteria}`);
       if (response.status === 200) {
         setFilteredProducts(response.data);
       } else {

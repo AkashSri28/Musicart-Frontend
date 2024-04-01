@@ -2,22 +2,7 @@
     margin: 15% auto;
     width: 40%;
   }
-  
-  .header-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  
-  .logo {
-    width: 50px;
-    height: auto;
-    margin-right: 10px;
-  }
-  
-  h1 {
-    margin: 0;
-  }
+
   
   .form-container {
     border: 1px solid #ccc;
@@ -26,13 +11,15 @@
     margin: 0 auto;
   }
   
-  .signup-form {
+  .sign-in-form {
     display: flex;
     flex-direction: column;
   }
-  
-  .form-group {
+
+  .sign-in-form .form-group {
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
   }
 
   .form-group.error input {
@@ -41,10 +28,6 @@
 
   .error-message {
     color: red;
-  }
-  
-  label {
-    font-weight: bold;
   }
   
   input[type="text"],
@@ -56,6 +39,10 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     outline: none;
+  }
+
+  .signup-agreement-note {
+    font-size: 13px;
   }
   
   button[type="submit"] {
@@ -71,5 +58,9 @@
   
   .success-message {
     color: green;
+  }
+
+  .login-link {
+    font-size: 15px;
   }
   

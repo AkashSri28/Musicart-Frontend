@@ -34,6 +34,8 @@ function Checkout() {
             return;
         }
 
+        console.log(cartItems)
+
         // Prepare the invoice data
         const invoiceData = {
             userId: user._id, // Assuming user._id is accessible
@@ -44,7 +46,8 @@ function Checkout() {
                 productId: item.productId,
                 productName: item.productName,
                 quantity: item.quantity,
-                price: item.price
+                price: item.price,
+                imageUrl: item.imageUrl
             })),
             cartTotal: cartTotal
         };
@@ -127,9 +130,9 @@ function Checkout() {
                                         <div>
                                             <p style={{ fontSize: '18px', fontWeight: 'bold' }}>{selectedProduct.productName}</p>
                                             <p style={{ color: '#797979' }}>Color: {selectedProduct.color}</p>
-                                            <p>Estimated delivery : Monday — FREE Standard Delivery</p>
                                         </div>
                                     )}
+                                    <p>Estimated delivery : Monday — FREE Standard Delivery</p>
                                 </div>
                             </div>
                             <hr/>

@@ -50,7 +50,7 @@ function Signup() {
     }
 
     try {
-      const response = await axios.post('http://localhost:4000/api/user/signup', formData);
+      const response = await axios.post('https://musicart-backend-vw7t.onrender.com/api/user/signup', formData);
       if (response.status === 201) {
         setSuccessMessage('Registration successful! Please log in.');
         setFormData({
@@ -72,19 +72,19 @@ function Signup() {
   };
 
   return (
-    <div className="signup-container">
+    <div className="login-container">
 
       <div className="header-container">
-        {/* Logo */}
-        <img src="logo.png" alt="Logo" className="logo" />
-        {/* Musicart text */}
-        <h1>Musicart</h1>
+        <div className="header-container"> {/* Container for logo and text */}
+          <img src="logo.png" alt="Logo" class="logo" />
+          <span class="logo-text">Musicart</span>
+        </div>
       </div>
 
       <div className="form-container">
 
-        <h2>Signup</h2>
-        <form onSubmit={handleSubmit} className="signup-form">
+        <h2>Create Account</h2>
+        <form onSubmit={handleSubmit} className="sign-in-form">
           <div className={`form-group ${errors.name ? 'error' : ''}`}>
             <label>Name:</label>
             <input type="text" name="name" value={formData.name} onChange={handleChange} />
@@ -107,13 +107,13 @@ function Signup() {
           </div>
 
           {/* Agreement note */}
-          <p>By enrolling your mobile phone number, you consent to receive automated security notifications via 
+          <p className='signup-agreement-note'>By enrolling your mobile phone number, you consent to receive automated security notifications via 
             text message from Musicart. Message and data rates may apply.</p>
 
           <button type="submit">Continue</button>
 
           {/* Agreement note */}
-          <p>By continuing, you agree to Musicart privacy notice and conditions of use.</p>
+          <p className='agreement-note'>By continuing, you agree to Musicart privacy notice and conditions of use.</p>
 
           
 
@@ -121,7 +121,7 @@ function Signup() {
         {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
 
       </div>
-      <p>Already have an account? <Link to="/login">Sign in</Link></p> {/* Add link to login page */}
+      <p className='login-link'>Already have an account? <Link to="/login">Sign in</Link></p> {/* Add link to login page */}
       
       <BottomBar/>
     </div>

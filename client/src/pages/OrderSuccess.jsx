@@ -10,7 +10,7 @@ function OrderSuccess() {
     return (
         <>
             <div className="content-wrapper">
-                <HorizontalBar />
+                <HorizontalBar showCart={false}/>
                 <div className="order-success-container">
                     <img src="confetti.png" alt="Order Success Image" className="success-image" />
                     <h2>Order is placed successfully!</h2>

@@ -4,14 +4,6 @@
     margin: 0 auto;
   }
   
-  /* Horizontal bar */
-  .horizontal-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f0f0f0;
-    padding: 10px;
-  }
   
   .back-to-products-button {
     background-color: #2e0052;

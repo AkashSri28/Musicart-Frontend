@@ -51,12 +51,12 @@ function Checkout() {
 
         try {
             // Send a POST request to save the invoice data
-            const response = await axios.post('https://musicart-backend-vw7t.onrender.com/api/invoices', invoiceData);
+            const response = await axios.post('https://musicart-backend-vw7t.onrender.com/api/invoices/save', invoiceData);
     
             // Check if the request was successful
             if (response.status === 201) {
                 // Redirect to the success page
-                
+
                 navigate('/order-success');
             } else {
                 console.error('Failed to save invoice data');

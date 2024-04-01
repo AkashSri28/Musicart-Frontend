@@ -1,0 +1,35 @@
+.invoice-content{
+    width: 80%;
+    margin: auto;
+}
+
+.invoice-item {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    justify-content: space-between;
+}
+
+
+
+.invoice-details {
+    display: flex;
+    align-items: center;
+}
+
+.invoice-image {
+    width: 100px; /* Set width of the image */
+    margin-right: 20px; /* Add margin for spacing */
+}
+
+.invoice-details-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.view-invoice-button {
+    margin-left: auto;
+    height: fit-content;
+    padding: 8px 30px;
+    background-color: #2E0052;
+    font-size: 15px;
+}

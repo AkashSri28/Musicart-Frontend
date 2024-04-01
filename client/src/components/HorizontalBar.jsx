@@ -12,7 +12,7 @@ const HorizontalBar = ({showCart, showCartCount}) => {
         <div class="logo-container">
           <img src="logo.png" alt="Logo" class="logo" />
           <span class="logo-text">Musicart</span>
-      </div>
+        </div>
         <a href="#" className="nav-link">Home</a>
         <a href="#" className="nav-link">Invoice</a>
       </div>

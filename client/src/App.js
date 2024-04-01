@@ -10,6 +10,7 @@ import { AuthProvider } from './context/authContext';
 import { CartProvider } from './context/cartContext';
 import Checkout from './pages/Checkout';
 import OrderSuccess from './pages/OrderSuccess';
+import InvoicePage from './pages/InvoicePage';
  // Import your Signup component
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/order-success" element={<OrderSuccess />} />
                 <Route path="/product/:id" element={<ProductDetails/>} />
+                <Route path="/invoices" element={<InvoicePage />} />
                 
               </Routes>
             </div>

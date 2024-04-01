@@ -171,9 +171,12 @@ const ProductListing = () => {
         <div className="horizontal-bar">
           {/* Left side */}
           <div className="left-side">
-            <img src="logo.png" alt="Logo" className="logo" />
-            <a href="#" className="nav-link">Home</a>
-            <a href="#" className="nav-link">Invoice</a>
+            <div class="logo-container">
+              <img src="logo.png" alt="Logo" class="logo" />
+              <span class="logo-text">Musicart</span>
+            </div>
+            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/invoices" className="nav-link">Invoice</Link>
           </div>
           {/* Right side */}
           <div className="right-side">

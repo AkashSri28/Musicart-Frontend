@@ -6,6 +6,7 @@
     border: none; /* Remove border */
     border-radius: 15px; /* Border radius */
     cursor: pointer;
+    color: #fff;
   }
   
   .cart-icon {

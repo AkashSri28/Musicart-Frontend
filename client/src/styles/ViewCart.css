@@ -1,0 +1,19 @@
+.view-cart-btn {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px; 
+    background-color: #1D7000;
+    border: none; /* Remove border */
+    border-radius: 15px; /* Border radius */
+    cursor: pointer;
+  }
+  
+  .cart-icon {
+    font-size: 1.5em; /* Adjust the size of the icon */
+    margin-right: 5px; /* Adjust spacing between icon and text */
+  }
+  
+  .button-text {
+    margin-left: 5px; /* Adjust spacing between icon and text */
+  }
+  

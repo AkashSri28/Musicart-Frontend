@@ -118,11 +118,6 @@
       padding: 15px; /* Reduce padding for smaller screens */
   }
 
-  input[type="text"],
-  input[type="password"] {
-      width: 100%; /* Make inputs full width */
-  }
-
   .new-to-musicart {
       flex-direction: column; /* Stack elements vertically */
       align-items: flex-start; /* Align elements to the start */

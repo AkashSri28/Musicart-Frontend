@@ -12,6 +12,8 @@ import { FaList } from "react-icons/fa";
 import { TfiViewListAlt } from "react-icons/tfi";
 import { FaSearch } from 'react-icons/fa';
 import ViewCart from './ViewCart';
+import BottomBar from './BottomBar';
+import FeedbackButton from './FeedbackButton';
 
 
 const ProductListing = () => {
@@ -293,7 +295,7 @@ const ProductListing = () => {
                 
                 <div className="product-details">
                   <h3>{product.productName}</h3>
-                  <p>Price: {product.price}</p>
+                  <p>Price: ₹{product.price}</p>
                   <p>{product.color}</p>
                   <p>{product.productType}</p>
                 </div>
@@ -323,7 +325,7 @@ const ProductListing = () => {
                 </div>
                 <div className="product-details">
                   <h3>{product.productName}</h3>
-                  <p>Price: {product.price}</p>
+                  <p>Price: ₹{product.price}</p>
                   <p>{product.color}</p>
                   <p>{product.description}</p>
                   <p>{product.productType}</p>
@@ -335,7 +337,12 @@ const ProductListing = () => {
           )}
           
         </div>
+
+        <FeedbackButton/>
+
       </div>
+
+      <BottomBar/>
       
     </div>
   );

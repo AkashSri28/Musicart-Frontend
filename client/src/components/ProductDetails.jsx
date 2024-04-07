@@ -25,7 +25,7 @@ const ProductDetails = () => {
         const response = await axios.get(`https://musicart-backend-vw7t.onrender.com/api/products/${productId}`);
         if (response.status === 200) {
           setProduct(response.data);
-          setSelectedImage(product.imageUrl);
+          setSelectedImage(product.imageUrl[0]);
         } else {
           console.error('Failed to fetch product');
         }
@@ -35,7 +35,7 @@ const ProductDetails = () => {
     };
 
     fetchProduct();
-  }, [productId]);
+  }, [productId, product]);
 
   const handleAddToCart = async () => {
     if (!isLoggedIn) {

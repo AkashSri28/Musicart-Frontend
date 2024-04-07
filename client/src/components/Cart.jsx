@@ -29,7 +29,7 @@ const Cart = () => {
 
         
         {/* "Back to Products" button */}
-        <button className="back-to-products-button" onClick={() => navigate('/')}>Back to Products</button>
+        <button className="back-to-button" onClick={() => navigate('/')}>Back to Products</button>
           <div className="cart-title">
             <AiOutlineShopping size={40} /> 
             <span className="cart-title-text">My Cart</span>

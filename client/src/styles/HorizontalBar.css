@@ -1,9 +1,10 @@
 /* Horizontal bar */
 .horizontal-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
+    background-color: #fff; /* Background color */
+    padding: 10px; /* Padding */
+    display: flex; /* Use flexbox to align items */
+    justify-content: space-between; /* Space between items */
+    align-items: center; 
   }
   
   .left-side {

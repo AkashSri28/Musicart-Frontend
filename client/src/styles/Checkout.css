@@ -5,7 +5,7 @@
   }
   
   
-  .back-to-products-button {
+  .back-to-button {
     background-color: #2e0052;
     color: white;
     padding: 10px 20px;
@@ -13,6 +13,7 @@
     border-radius: 5px;
     cursor: pointer;
     margin-top: 20px;
+    margin-right: 84%;
   }
   
   .back-to-products-button:hover {

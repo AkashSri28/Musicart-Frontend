@@ -14,12 +14,12 @@ const TopBar = () => {
 
   return (
     <div className="top-bar">
-      <div className="phone-number">Phone: 123-456-7890</div>
-      <div className="promotion">Get 50% off | Shop now</div>
+       <div className="phone-number">Phone: 123-456-7890</div>
+       <div className="promotion">Get 50% off on selected items | Shop now</div>
 
       {!isLoggedIn ? (
         <div className="auth-buttons">
-          <Link to="/login">Login</Link>
+          <Link to="/login">Login</Link>|
           <Link to="/signup">Signup</Link>
         </div>
       ) : (

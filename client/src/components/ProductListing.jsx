@@ -53,6 +53,7 @@ const ProductListing = () => {
           if (response.status === 200) {
             setProducts(response.data);
             setFilteredProducts(response.data);
+            console.log(response.data)
           } else {
             console.error('Failed to fetch products');
           }
@@ -69,6 +70,7 @@ const ProductListing = () => {
     // Fetch filtered products from the backend whenever the selected filters change
     const fetchFilteredProducts = async () => {
       try {
+        console.log(selectedPriceRange);
         const response = await axios.get('https://musicart-backend-vw7t.onrender.com/api/products/filter', {
           params: {
             type: selectedType,
@@ -138,7 +140,7 @@ const ProductListing = () => {
   const headphoneTypes = [...new Set(products.map(product => product.productType))];
   const companies = [...new Set(products.map(product => product.company))];
   const colors = [...new Set(products.map(product => product.color))];
-  const priceRanges = ['Under $20', '$20 - $30', '$30 - $40', '$40 - $50', 'Over $50'];
+  const priceRanges = ['₹0 - ₹1000', '₹1000 - ₹2000', '₹2000 - ₹5000'];
 
    // Function to get user's initials
    const getUserInitials = () => {
@@ -159,7 +161,7 @@ const ProductListing = () => {
       {/* Top bar */}
       <div className="top-bar">
         <div className="phone-number">Phone: 123-456-7890</div>
-        <div className="promotion">Get 50% off | Shop now</div>
+        <div className="promotion">Get 50% off on selected items | Shop now</div>
         {!isLoggedIn && (
         <div className="auth-buttons">
           <Link to="/login">Login</Link>|
@@ -338,7 +340,7 @@ const ProductListing = () => {
           
         </div>
 
-        <FeedbackButton/>
+        {isLoggedIn && <FeedbackButton/>}
 
       </div>
 

@@ -6,22 +6,6 @@
   margin: 0 auto; /* Center the content */
 }
 
-
-.back-to-products-button {
-  background-color: #2E0052;
-  color: #fff; /* Text color */
-  padding: 10px 20px; /* Adjust padding */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Add border radius */
-  cursor: pointer; /* Add cursor pointer */
-  display: flex;
-  margin-top: 20px;
-}
-
-.back-to-products-button:hover {
-  background-color: #4A0072; /* Darker shade on hover */
-}
-
 .cart-title {
   display: flex;
   align-items: center; 

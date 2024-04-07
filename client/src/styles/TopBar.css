@@ -17,7 +17,6 @@
   /* Promotion styles */
   .promotion {
     font-size: 14px; /* Font size */
-    font-weight: bold; /* Bold text */
     text-align: center;
     flex-grow: 1;    
   }
@@ -30,6 +29,6 @@
   .auth-buttons a{
     color: #fff;
     font-size: 16px;
-    font-weight: bold;
+    text-decoration: none;
   }
 

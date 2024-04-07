@@ -94,8 +94,12 @@
   .product-details button{
     margin-left: 10px;
     width: fit-content;
-    border-radius: 10px;
     background-color: #2E0052;
+    color: #fff;
+    border-radius: 30px;
+    padding: 5px 20px;
+    border: none;
+    cursor: pointer;
   }
 
   /* ProductListing.css */
@@ -252,12 +256,38 @@
   cursor: pointer; /* Show pointer cursor on hover */
 }
   
-/* button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-} */
-  
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .content-wrapper {
+    width: 100%; /* Change width to full width for smaller screens */
+  }
+
+  .horizontal-bar {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    padding: 10px 0; /* Adjust padding */
+  }
+
+  .right-side {
+    margin-top: 20px; /* Add space between the logo and right-side items */
+  }
+
+  .view-toggle-buttons {
+    margin-top: 20px; /* Add space between view toggle buttons and filter dropdowns */
+  }
+
+  .filter-dropdowns {
+    flex-direction: column; /* Stack filter dropdowns vertically */
+  }
+
+  .sort-dropdowns {
+    margin-top: 20px; /* Add space between filter dropdowns and sort dropdown */
+    text-align: left; /* Align sort dropdown to the left */
+  }
+
+  .feedback-button-container {
+    bottom: 20px; /* Adjust the distance from the bottom for smaller screens */
+    right: 20px; /* Adjust the distance from the right for smaller screens */
+  }
+}
+

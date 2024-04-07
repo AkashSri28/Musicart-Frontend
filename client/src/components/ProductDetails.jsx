@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/ProductDetails.css'; // Import the CSS file
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -16,6 +16,8 @@ const ProductDetails = () => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
+  const [selectedImage, setSelectedImage] = useState(null);
+
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -23,6 +25,7 @@ const ProductDetails = () => {
         const response = await axios.get(`https://musicart-backend-vw7t.onrender.com/api/products/${productId}`);
         if (response.status === 200) {
           setProduct(response.data);
+          setSelectedImage(product.imageUrl);
         } else {
           console.error('Failed to fetch product');
         }
@@ -43,6 +46,10 @@ const ProductDetails = () => {
     addToCart(product); 
   };
 
+  const handleThumbnailClick = (image) => {
+    setSelectedImage(image);
+  };
+
 
   return (
     <div>
@@ -51,20 +58,33 @@ const ProductDetails = () => {
         <HorizontalBar/>
 
         {/* "Back to Products" button */}
-        <button onClick={() => navigate(-1)}>Back to Products</button>
+        <button className='back-to-button' onClick={() => navigate(-1)}>Back to Products</button>
 
           {
             product?(
               <>
-                <h2>{product.productName}</h2>
+                <h2 className='product-title'>{product.description}</h2>
                 <div className="product-details-content">
                   
                   {/* Left side for images */}
                   <div className="product-images">
-                    {/* {product && product.imageUrl.map((image, index) => (
-                      <img key={index} src={image} alt={`Product ${index + 1}`} />
-                    ))} */}
-                    {product && <img className='product-image' src={product.imageUrl} alt={product.productName} />}
+                    {/* Large image */}
+                    <div className="large-image-container">
+                      <img className="product-image large-image" src={selectedImage} alt={product.productName} />
+                    </div>
+
+                    {/* Additional images */}
+                    <div className="thumbnail-images-container">
+                      {product.imageUrl.map((image, index) => (
+                        <img
+                          key={index}
+                          className="thumbnail-image"
+                          src={image}
+                          alt={`Thumbnail ${index + 1}`}
+                          onClick={() => handleThumbnailClick(image)}
+                        />
+                      ))}
+                    </div>
                   </div>
 
                   {/* Right side for description */}
@@ -77,16 +97,21 @@ const ProductDetails = () => {
                       <p>Customer reviews: {product.reviewsCount}</p>
                     </div>
 
-                    <p>Price: ${product.price}</p>
-                    <p>Color: {product.color}</p>
-                    <p>Type: {product.productType}</p>
-                    <p>About this item:</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>Price - ₹ {product.price}</p>
+                    <p>{product.color} | {product.productType}</p>
+                    <div className='about-product'>
+
+                      <p>About this item:</p>
+                      <ul>
+                        {product.about && product.about.map((item, index) => (
+                          <li key={index}>{item}</li>
+                        ))}
+                      </ul>
+                      
+                    </div>
+                   
                     <p>Available: In stock</p>
-                    <p>Brand: {product.brand}</p>
+                    <p>Brand: {product.company}</p>
                     <button onClick={handleAddToCart}>Add to Cart</button>
                     <button className='buy-now'>Buy Now</button>
                   </div>

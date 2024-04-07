@@ -2,6 +2,7 @@
 import React from 'react';
 import ViewCart from './ViewCart';
 import '../styles/HorizontalBar.css'; // Import the CSS file
+import { Link } from 'react-router-dom';
 
 const HorizontalBar = ({showCart, showCartCount}) => {
 
@@ -13,8 +14,8 @@ const HorizontalBar = ({showCart, showCartCount}) => {
           <img src="logo.png" alt="Logo" class="logo" />
           <span class="logo-text">Musicart</span>
         </div>
-        <a href="#" className="nav-link">Home</a>
-        <a href="#" className="nav-link">Invoice</a>
+        <Link to="/" className="nav-link">Home</Link>
+        <Link to="/invoices" className="nav-link">Invoice</Link>
       </div>
       {/* Right side */}
       <div className="right-side">

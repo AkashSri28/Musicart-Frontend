@@ -42,7 +42,7 @@ function InvoicePage() {
             <TopBar/>
             <div className='content-wrapper'>
                 <HorizontalBar showCart={true}/>
-                <button className="back-to-products-button" onClick={() => navigate('/')}>Back to Home</button>
+                <button className="back-to-button" onClick={() => navigate('/')}>Back to Home</button>
                 <div className="cart-title">
                     <span className="cart-title-text">My Invoices</span>
                 </div>

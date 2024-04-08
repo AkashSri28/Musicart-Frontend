@@ -36,7 +36,7 @@ function InvoiceDetail() {
         <div className='content-wrapper'>
 
                 <HorizontalBar/>
-                <button className="back-to-products-button" onClick={() => navigate('/cart')}>Back to cart</button>
+                <button className="back-to-button" onClick={() => navigate('/cart')}>Back to cart</button>
                 <h2 className='checkout-title'>Invoice</h2>
                 {invoice && 
                 <div className="checkout-content">

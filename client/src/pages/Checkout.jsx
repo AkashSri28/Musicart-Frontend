@@ -82,7 +82,7 @@ function Checkout() {
         <div className='content-wrapper'>
 
             <HorizontalBar/>
-            <button className="back-to-products-button" onClick={() => navigate('/cart')}>Back to cart</button>
+            <button className="back-to-button" onClick={() => navigate('/cart')}>Back to cart</button>
             <h2 className='checkout-title'>Checkout</h2>
             <div className="checkout-content">
                 <div className="checkout-section">

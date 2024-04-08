@@ -51,8 +51,8 @@
     flex-direction: column;
   }
   .product-list .product-card {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
   }
 
   .product-image-container {

@@ -53,7 +53,6 @@ const ProductListing = () => {
           if (response.status === 200) {
             setProducts(response.data);
             setFilteredProducts(response.data);
-            console.log(response.data)
           } else {
             console.error('Failed to fetch products');
           }

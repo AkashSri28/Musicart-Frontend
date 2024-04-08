@@ -25,7 +25,7 @@ const ProductDetails = () => {
         const response = await axios.get(`https://musicart-backend-vw7t.onrender.com/api/products/${productId}`);
         if (response.status === 200) {
           setProduct(response.data);
-          setSelectedImage(product.imageUrl[0]);
+          setSelectedImage(response.data.imageUrl[0]);
         } else {
           console.error('Failed to fetch product');
         }
@@ -35,7 +35,7 @@ const ProductDetails = () => {
     };
 
     fetchProduct();
-  }, [productId, product]);
+  }, [productId]);
 
   const handleAddToCart = async () => {
     if (!isLoggedIn) {
@@ -55,7 +55,19 @@ const ProductDetails = () => {
     <div>
       <TopBar/>
       <div className="content-wrapper">
-        <HorizontalBar/>
+        
+        <div className="horizontal-bar">
+          {/* Left side */}
+          <div className="left-side">
+            <div class="logo-container">
+              <img src="logo.png" alt="Logo" class="logo" />
+              <span class="logo-text">Musicart</span>
+            </div>
+            <Link to="/" className="nav-link">Home</Link> /
+            <p style={{marginLeft: "10px"}}>{product?.productName}</p>
+          </div>
+
+        </div>
 
         {/* "Back to Products" button */}
         <button className='back-to-button' onClick={() => navigate(-1)}>Back to Products</button>
@@ -75,7 +87,9 @@ const ProductDetails = () => {
 
                     {/* Additional images */}
                     <div className="thumbnail-images-container">
-                      {product.imageUrl.map((image, index) => (
+                      {product.imageUrl
+                      .filter((image) => image !== selectedImage)
+                      .map((image, index) => (
                         <img
                           key={index}
                           className="thumbnail-image"

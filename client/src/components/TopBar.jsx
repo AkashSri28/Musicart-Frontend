@@ -1,15 +1,17 @@
 // TopBar.jsx
 import React from 'react';
 import { useAuth } from '../context/authContext';
-import {Link} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 import '../styles/TopBar.css';
 
 const TopBar = () => {
   const { isLoggedIn, login, logout } = useAuth();
 
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     logout();
-    // Perform any additional logout actions (e.g., redirect)
+    // navigate('/');
   };
 
   return (

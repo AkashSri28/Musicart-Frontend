@@ -8,6 +8,8 @@ import TopBar from './TopBar';
 import HorizontalBar from './HorizontalBar';
 import { useCart } from '../context/cartContext';
 import { useAuth } from '../context/authContext';
+import BottomBar from './BottomBar';
+import ViewCart from './ViewCart';
 
 const ProductDetails = () => {
   const productId  = useParams().id; // Get the product ID from the URL
@@ -46,6 +48,16 @@ const ProductDetails = () => {
     addToCart(product); 
   };
 
+  const handleBuyNow = async () => {
+    if (!isLoggedIn) {
+      // If user is not logged in, redirect to login page
+      navigate('/login');
+      return;
+    }
+    await addToCart(product); 
+    navigate('/cart');
+  }
+
   const handleThumbnailClick = (image) => {
     setSelectedImage(image);
   };
@@ -65,6 +77,15 @@ const ProductDetails = () => {
             </div>
             <Link to="/" className="nav-link">Home</Link> /
             <p style={{marginLeft: "10px"}}>{product?.productName}</p>
+          </div>
+
+          {/* Right side */}
+          <div className="right-side">
+            {isLoggedIn && (
+              <>
+                <ViewCart showCartCount={true}/>
+              </>
+            )}
           </div>
 
         </div>
@@ -127,7 +148,7 @@ const ProductDetails = () => {
                     <p>Available: In stock</p>
                     <p>Brand: {product.company}</p>
                     <button onClick={handleAddToCart}>Add to Cart</button>
-                    <button className='buy-now'>Buy Now</button>
+                    <button onClick={handleBuyNow} className='buy-now'>Buy Now</button>
                   </div>
                 </div>
               </>
@@ -138,6 +159,7 @@ const ProductDetails = () => {
           )}          
           
       </div>
+      <BottomBar/>
       
     </div>
   );

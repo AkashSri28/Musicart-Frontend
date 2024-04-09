@@ -179,7 +179,7 @@ const ProductListing = () => {
               <span class="logo-text">Musicart</span>
             </div>
             <Link to="/" className="nav-link">Home</Link>
-            <Link to="/invoices" className="nav-link">Invoice</Link>
+            {isLoggedIn && <Link to="/invoices" className="nav-link">Invoice</Link>}
           </div>
           {/* Right side */}
           <div className="right-side">

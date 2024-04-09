@@ -1,15 +1,16 @@
 import React, { useState, useRef } from 'react'
 import TopBar from '../components/TopBar'
-import HorizontalBar from '../components/HorizontalBar';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import '../styles/Checkout.css'; // Import the CSS file
 import { useAuth } from '../context/authContext';
 import { useCart } from '../context/cartContext';
 import axios from 'axios';
+import ViewCart from '../components/ViewCart';
+import BottomBar from '../components/BottomBar';
 
 function Checkout() {
     const navigate = useNavigate();
-    const { user } = useAuth();
+    const { user, isLoggedIn } = useAuth();
     const { cartItems, cartTotal } = useCart();
 
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -81,7 +82,27 @@ function Checkout() {
         <TopBar/>
         <div className='content-wrapper'>
 
-            <HorizontalBar/>
+            <div className="horizontal-bar">
+                {/* Left side */}
+                <div className="left-side">
+                    <div class="logo-container">
+                    <img src="logo.png" alt="Logo" class="logo" />
+                    <span class="logo-text">Musicart</span>
+                    </div>
+                    <Link to="/" className="nav-link">Home</Link> /
+                    <p style={{marginLeft: "10px"}}>Checkout</p>
+                </div>
+
+                {/* Right side */}
+                <div className="right-side">
+                    {isLoggedIn && (
+                    <>
+                        <ViewCart showCartCount={true}/>
+                    </>
+                    )}
+                </div>
+
+            </div>
             <button className="back-to-button" onClick={() => navigate('/cart')}>Back to cart</button>
             <h2 className='checkout-title'>Checkout</h2>
             <div className="checkout-content">
@@ -178,6 +199,7 @@ function Checkout() {
                  </div>
             </div>
         </div>
+        <BottomBar/>
     </div>
   )
 }

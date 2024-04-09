@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
 
+
   useEffect(() => {
     // Check if user and token exist in local storage
     const storedUser = localStorage.getItem('user');
@@ -26,6 +27,7 @@ export const AuthProvider = ({ children }) => {
     setIsLoggedIn(true);
     localStorage.setItem('user', JSON.stringify(userData));
     localStorage.setItem('token', authToken);
+    localStorage.setItem('isLoggedIn', isLoggedIn);
   };
 
   const logout = () => {
@@ -34,6 +36,7 @@ export const AuthProvider = ({ children }) => {
     setIsLoggedIn(false);
     localStorage.removeItem('user');
     localStorage.removeItem('token');
+    localStorage.removeItem('isLoggedIn');
   };
 
   return (

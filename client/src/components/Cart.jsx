@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Cart.css'; // Import the CSS file
-import HorizontalBar from './HorizontalBar';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import TopBar from './TopBar';
 import { useCart } from '../context/cartContext';
 import { AiOutlineShopping } from "react-icons/ai";
+import BottomBar from './BottomBar';
+import ViewCart from './ViewCart';
+import { useAuth } from '../context/authContext';
 
 const Cart = () => {
   const {cartItems, updateCartItemQuantity} = useCart();
+  const {isLoggedIn} = useAuth();
   
   const navigate = useNavigate();
 
@@ -25,7 +28,27 @@ const Cart = () => {
       <TopBar/>
      
       <div className="content-wrapper">
-        <HorizontalBar showCartCount={false}/>
+            <div className="horizontal-bar">
+                {/* Left side */}
+                <div className="left-side">
+                    <div class="logo-container">
+                    <img src="logo.png" alt="Logo" class="logo" />
+                    <span class="logo-text">Musicart</span>
+                    </div>
+                    <Link to="/" className="nav-link">Home</Link> /
+                    <p style={{marginLeft: "10px"}}>View Cart</p>
+                </div>
+
+                {/* Right side */}
+                <div className="right-side">
+                    {isLoggedIn && (
+                    <>
+                        <ViewCart showCartCount={false}/>
+                    </>
+                    )}
+                </div>
+
+            </div>
 
         
         {/* "Back to Products" button */}
@@ -114,7 +137,7 @@ const Cart = () => {
 
                 <div>
                   <div className="price-item">
-                    <p>Total amount:</p>
+                    <p>Total Amount:</p>
                     <p>₹{(cartItems.reduce((total, item) => total + item.quantity * parseFloat(item.price.replace('₹', '')), 0) + 45).toFixed(2)}</p>
                   </div>
                   <button className="checkout-button" onClick={handlePlaceOrder}>PLACE ORDER</button>
@@ -126,6 +149,8 @@ const Cart = () => {
             )}
 
           </div>
+
+          <BottomBar/>
 
       </div>
   );

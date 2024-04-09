@@ -51,7 +51,6 @@ function Checkout() {
             cartTotal: cartTotal
         };
 
-        console.log(invoiceData)
 
         try {
             // Send a POST request to save the invoice data

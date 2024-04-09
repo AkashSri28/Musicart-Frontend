@@ -76,7 +76,6 @@ export const CartProvider = ({ children }) => {
   const updateCartItemQuantity = async (productId, quantity) => {
     try {
       const userId = user._id;
-      console.log(productId+" "+quantity+" "+userId);
       const response = await axios.put(`https://musicart-backend-vw7t.onrender.com/api/cart/updateQuantity`, {
         productId,
         quantity,

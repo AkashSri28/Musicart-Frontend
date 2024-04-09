@@ -44,7 +44,7 @@ const FeedbackButton = () => {
 
         if (!hasErrors) {
             // Submit the form if no errors
-            console.log('Form submitted:', formData);
+            console.log('Form submitted');
             // Reset form data and close the popup
             setFormData({ feedbackType: '', feedback: '' });
             setIsOpen(false);

@@ -23,8 +23,8 @@ function App() {
               {/* Define your routes */}
               <Routes>
                 <Route path="/" element={<ProductListing/>} />
-                <Route path="/signup" element={<Signup/>} />
-                <Route path="/login" element={<Login/>} />
+                <Route path="/signup" element={!isLoggedIn ? <Signup/> : <Navigate to="/"/>} />
+                <Route path="/login" element={!isLoggedIn ? <Login/> : <Navigate to="/"/> } />
                 <Route path="/cart" element={isLoggedIn ? <Cart/> : <Navigate to="/login" /> } />
                 <Route path="/checkout" element={isLoggedIn ? <Checkout /> :<Navigate to="/login" />  } />
                 <Route path="/order-success" element={ isLoggedIn ? <OrderSuccess /> : <Navigate to="/login" /> } />

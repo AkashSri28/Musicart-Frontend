@@ -19,10 +19,7 @@ function App() {
   
   return (
       <Router>
-        <AuthProvider>
-          <CartProvider>
-            
-            <div className="App">
+        <div className="App">
               {/* Define your routes */}
               <Routes>
                 <Route path="/" element={<ProductListing/>} />
@@ -36,12 +33,7 @@ function App() {
                 <Route path="/invoices/:id" element={ isLoggedIn ? <InvoiceDetail /> : <Navigate to="/login" /> } />
                 
               </Routes>
-            </div>
-
-          </CartProvider>
-          
-
-        </AuthProvider>
+          </div>
        
     </Router>
   );

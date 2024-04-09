@@ -16,9 +16,6 @@
     margin-right: 84%;
   }
   
-  .back-to-products-button:hover {
-    background-color: #5c307b;
-  }
   
   .checkout-title {
     margin-top: 20px;
@@ -90,6 +87,8 @@
         margin-bottom: 10px;
         margin-right: 10px;
         cursor: pointer;
+        border: 1px solid #000;
+        border-radius: 10px;
     }
 
     .cart-item-image-selected {

@@ -34,8 +34,6 @@ function Checkout() {
             return;
         }
 
-        console.log(cartItems)
-
         // Prepare the invoice data
         const invoiceData = {
             userId: user._id, // Assuming user._id is accessible
@@ -47,10 +45,12 @@ function Checkout() {
                 productName: item.productName,
                 quantity: item.quantity,
                 price: item.price,
-                imageUrl: item.imageUrl
+                imageUrl: item.imageUrl[0]
             })),
             cartTotal: cartTotal
         };
+
+        console.log(invoiceData)
 
         try {
             // Send a POST request to save the invoice data
@@ -118,7 +118,7 @@ function Checkout() {
                                                 onClick={() => handleImageClick(item.productName, item.color)}
                                                 >
                                                 <img 
-                                                    src={item.imageUrl} 
+                                                    src={item.imageUrl[0]} 
                                                     alt={item.productName}  
                                                     className={selectedProduct && selectedProduct.productName === item.productName ? 'cart-item-image-selected' : 'cart-item-image'} 
                                                 />
